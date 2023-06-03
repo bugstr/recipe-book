@@ -18,59 +18,6 @@
   text-align: center;
 }
 
-.header__btn-search {
-  padding: 20px 48px;
-  border-radius: 9999px;
-  font-size: 22px;
-  font-weight: 700;
-  color: white;
-  background-color: black;
-  cursor: pointer;
-  transition: all 300ms ease;
-}
-
-.header__btn-search:hover {
-  background-color: #242424;
-}
-
-.input-wrapper {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  animation: fadeIn ease 2s;
-}
-
-#searchInput {
-  width: 100%;
-  max-width: 500px;
-  height: 60px;
-  border-radius: 50px;
-  overflow: hidden;
-  padding-left: 24px;
-  font-size: 18px;
-}
-
-.search-button {
-  position: absolute;
-  top: 50%;
-  right: 60px;
-  transform: translateY(-50%);
-  padding: 12px 18px;
-  border-radius: 9999px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  background-color: black;
-  cursor: pointer;
-  transition: all 300ms ease;
-}
-
-.search-button:hover {
-  background-color: #242424;
-}
-
 .recipe-img--wrapper {
   display: flex;
   justify-content: center;

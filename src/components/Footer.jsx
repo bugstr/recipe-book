@@ -8,9 +8,9 @@ function Footer() {
       <div className="container">
         <div className="row row__column">
           <Link to="/">
-            <figure>
+            {/* <figure>
               <img src="/logo-black.png" className="footer__logo" alt="" />
-            </figure>
+            </figure> */}
           </Link>
           <div className="footer__links">
             <Link to="/" className="footer__link link__hover-effect">
