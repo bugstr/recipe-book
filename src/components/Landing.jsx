@@ -20,8 +20,9 @@ function Landing({ input, setInput, recipes, setRecipes }) {
   };
 
   useEffect(() => {
-    setInput("")
-  }, [])
+    setInput("");
+    setRecipes([]);
+  }, []);
 
   return (
     <header>

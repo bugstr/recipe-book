@@ -13,18 +13,22 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
   const onSearch = () => {
     if (input.length !== 0) {
       setInput(input);
+      setRecipes([]);
       fetchRecipes();
     } else {
       setRecipes([]);
+      fetchRecipes();
     }
+
   };
 
   // enter key press function
   const handleKeyPress = (event) => {
     if (event.key === "Enter" && input.length !== 0) {
       setInput(input);
+      setRecipes([]);
       fetchRecipes();
-    } 
+    }
   };
 
   async function fetchRecipes() {
@@ -41,7 +45,6 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
 
   useEffect(() => {
     fetchRecipes();
-    setLoading(false);
   }, []);
 
   return (
@@ -74,12 +77,26 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
               <option value="YEAR">Release Year</option>
             </select> */}
           </div>
+          {/* <figure className="results__img--wrapper">
+              <img className="results__img" src="./undraw_breakfast.svg" alt="" />
+            </figure> */}
           <div className="results__wrapper">
-            {loading
-              ? new Array(6).fill(0).map((_, index) => <Skeleton key={index} />)
-              : recipes
-                  .slice(0, 6)
-                  .map((recipe) => <Recipe recipe={recipe} key={recipe.uri} />)}
+            {loading ? (
+              new Array(6).fill(0).map((_, index) => <Skeleton key={index} />)
+            ) : recipes.length === 0 ? (
+              <figure className="results__img--wrapper">
+                <img
+                  className="results__img"
+                  src="./undraw_breakfast.svg"
+                  alt=""
+                />
+                <div className="results__text">No Results Found!</div>
+              </figure>
+            ) : (
+              recipes
+                .slice(0, 6)
+                .map((recipe) => <Recipe recipe={recipe} key={recipe.uri} />)
+            )}
           </div>
         </div>
       </div>
