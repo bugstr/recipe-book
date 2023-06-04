@@ -13,5 +13,6 @@
 .results__wrapper { 
   display: flex;
   flex-wrap: wrap;
+  height: 80vh;
   padding: 32px 0;
 }

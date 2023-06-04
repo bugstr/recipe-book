@@ -1,13 +1,31 @@
 import { useEffect, useState } from "react";
-import SearchBar from "../components/SearchBar";
 import "./Recipes.css";
 import axios from "axios";
 import Skeleton from "../components/Skeleton";
 import Recipe from "../components/Recipe";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Recipes({ setInput, input }) {
-  const [recipes, setRecipes] = useState([]);
+function Recipes({ input, setInput, recipes, setRecipes }) {
   const [loading, setLoading] = useState();
+
+  // onSearch function
+  const onSearch = () => {
+    if (input.length !== 0) {
+      setInput(input);
+      fetchRecipes();
+    } else {
+      setRecipes([]);
+    }
+  };
+
+  // enter key press function
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" && input.length !== 0) {
+      setInput(input);
+      fetchRecipes();
+    } 
+  };
 
   async function fetchRecipes() {
     setLoading(true); //shows skeleton state when fetchRecipes() is called
@@ -23,6 +41,7 @@ function Recipes({ setInput, input }) {
 
   useEffect(() => {
     fetchRecipes();
+    setLoading(false);
   }, []);
 
   return (
@@ -31,7 +50,19 @@ function Recipes({ setInput, input }) {
         <div className="row">
           <div className="header__content">
             <h1 className="header__content--title">Browse our recipes </h1>
-            <SearchBar onSearch={setInput} input={input} />
+            <div className="input-wrapper">
+              <input
+                id="searchInput"
+                type="text"
+                placeholder="Search by recipe name or keyword"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(event) => handleKeyPress(event)}
+              />
+              <Link to="/recipes" className="search-button" onClick={onSearch}>
+                <FontAwesomeIcon icon="magnifying-glass" />
+              </Link>
+            </div>
           </div>
           <div className="results__header">
             <h2 className="results__header--title">Results:</h2>
@@ -44,15 +75,11 @@ function Recipes({ setInput, input }) {
             </select> */}
           </div>
           <div className="results__wrapper">
-           
-
             {loading
-              ? new Array(6).fill(0).map((_, index) => <Skeleton />)
+              ? new Array(6).fill(0).map((_, index) => <Skeleton key={index} />)
               : recipes
                   .slice(0, 6)
-                  .map((recipe, index) => (
-                    <Recipe recipe={recipe} key={index} />
-                  ))}
+                  .map((recipe) => <Recipe recipe={recipe} key={recipe.uri} />)}
           </div>
         </div>
       </div>

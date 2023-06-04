@@ -1,0 +1,18 @@
+.skeleton {
+  width: calc(100% / 3);
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton__img {
+  width: 100%;
+  height: 250px;
+  background-color: rgb(183, 178, 178);
+}
+
+.skeleton__title {
+  height: 20px;
+  background-color: rgb(183, 178, 178);
+}
