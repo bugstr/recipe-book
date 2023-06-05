@@ -1,5 +1,9 @@
 .recipePage {
-  height: 70vh;
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 80px;
+  padding-top: 24px;
 }
 
 .recipePage__img--wrapper {
@@ -12,27 +16,84 @@
 }
 
 .recipePage__title {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
+  text-align: center;
 }
 
-.recipePage__left {
-  width: 100%;
-  max-width: 340px;
+.recipePage__link {
+  padding: 16px 0;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recipePage__link > div > a {
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+.recipePage__link > a {
+  font-size: 18px;
 }
 
 .recipePage__right {
+  display: flex;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
+  gap: 40px;
+  height: 100%;
 }
 
 .recipePage__ingredients {
-
+  width: 100%;
+  max-width: 250px;
+  vertical-align: top;
 }
 
-.recipePage__ingredients--title {
+.recipePage__ingredients--title,
+.nutrients__title {
+  font-size: 24px;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  padding-bottom: 8px;
 }
 
-.ingredients { 
+.ingredients {
+  display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  font-size: 16px;
+  gap: 10px;
+  height: 550px;
+}
+
+.nutrients {
+  width: 100%;
+  max-width: 280px;
+  vertical-align: top;
+}
+
+.nutrients__info {
+  display: flex;
+  gap: 20px;
+  font-size: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.nutrients__allergies {
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.recipePage__skeleton {
+  max-width: 300px;
+  width: 100%;
+  height: 300px;
+  background-color: rgb(183, 178, 178);
 }

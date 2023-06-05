@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./RecipePage.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function RecipePage() {
   const { id } = useParams();
-  const [newRecipe, setNewRecipe] = useState();
-
-  console.log(id);
+  const [newRecipe, setNewRecipe] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [length, setLength] = useState(0);
 
   async function fetchRecipes() {
+    setLoading(true);
     const { data } = await axios.get(
       `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=b8060f52&app_key=c03b64fb40b662ada3d4352fef3d2cbb%09`
     );
+
     setNewRecipe(data.recipe);
-    console.log(newRecipe);
+    setLength(data.recipe.ingredientLines.length);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -22,39 +26,99 @@ function RecipePage() {
   }, []);
 
   return (
-    <div className="recipePage">
-      <div className="container">
-        <div className="row">
-          <div className="recipePage__left">
-            <figure className="recipePage__img--wrapper">
+    <div className="container">
+      <div className="row">
+        <div className="recipePage">
+          {loading ? (
+            <div className="recipePage__skeleton"></div>
+          ) : (
+            <div className="recipePage__img--wrapper">
               <img
                 className="recipePage__img"
                 src={newRecipe && newRecipe.image}
                 alt=""
               />
-            </figure>
-            <div className="recipePage__title">
-              {newRecipe && newRecipe.label}
+              <div className="recipePage__title">
+                {newRecipe && newRecipe.label}
+              </div>
+              <div className="recipePage__link">
+                <div>
+                  See more at:{" "}
+                  <Link to={newRecipe.url}>{newRecipe.source}</Link>
+                </div>
+                <Link to="/recipes">
+                  <FontAwesomeIcon icon="arrow-left" /> Go Back
+                </Link>
+              </div>
+
+              {length >= 10 && (
+                <div className="nutrients">
+                  <div className="nutrients__title">Nutrition</div>
+
+                  <div className="nutrients__info">
+                    {Math.floor(newRecipe.calories / newRecipe.yield)}{" "}
+                    Calories/Serving
+                    <p>{newRecipe.yield} Servings</p>
+                  </div>
+
+                  <div className="nutrients__allergies">
+                    {loading
+                      ? "Loading..."
+                      : newRecipe.healthLabels
+                          .slice(0, 14)
+                          .map((healthLabels, index) => (
+                            <div key={index}>{healthLabels}</div>
+                          ))}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
+          )}
 
           <div className="recipePage__right">
-            <div className="recipePage__ingredients">
-              <div className="recipePage__ingredients--title">Ingredients</div>
-              <div className="ingredients">
-               
-                {newRecipe
-                  ? newRecipe.ingredientLines.map((ingredientLine, index) => (
-                      <div key={index}>{ingredientLine}</div>
-                    ))
-                  : "Loading..."}
+            {loading ? (
+              <div className="recipePage__skeleton"></div>
+            ) : (
+              <div className="recipePage__ingredients">
+                <div className="recipePage__ingredients--title">
+                  Ingredients
+                </div>
+                <div className="ingredients">
+                  {loading
+                    ? "Loading..."
+                    : newRecipe.ingredientLines.map((ingredientLine, index) => (
+                        <div key={index}>{ingredientLine}</div>
+                      ))}
+                </div>
               </div>
-            </div>
-          </div>
+            )}
 
-          {/* {newRecipe
-        ? newRecipe.map((recipe) => <div>{recipe.label}</div>)
-        : "Loading"} */}
+            {loading ? (
+              <div className="recipePage__skeleton"></div>
+            ) : (
+              length <= 10 && (
+                <div className="nutrients">
+                  <div className="nutrients__title">Nutrition</div>
+
+                  <div className="nutrients__info">
+                    {Math.floor(newRecipe.calories / newRecipe.yield)}{" "}
+                    Calories/Serving
+                    <p>{newRecipe.yield} Servings</p>
+                  </div>
+
+                  <div className="nutrients__allergies">
+                    {loading
+                      ? "Loading..."
+                      : newRecipe.healthLabels
+                          .slice(0, 14)
+                          .map((healthLabels, index) => (
+                            <div key={index}>{healthLabels}</div>
+                          ))}
+                  </div>
+                </div>
+              )
+            )}
+          </div>
         </div>
       </div>
     </div>

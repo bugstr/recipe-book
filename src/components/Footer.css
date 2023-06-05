@@ -28,6 +28,7 @@ footer {
 
 .footer__link {
   text-decoration: none;
+  color: white !important;
 }
 
 .link__hover-effect {
