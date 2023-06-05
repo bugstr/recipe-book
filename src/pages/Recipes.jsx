@@ -8,28 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Recipes({ input, setInput, recipes, setRecipes }) {
   const [loading, setLoading] = useState();
-
-  // onSearch function
-  const onSearch = () => {
-    if (input.length !== 0) {
-      setInput(input);
-      setRecipes([]);
-      fetchRecipes();
-    } else {
-      setRecipes([]);
-      fetchRecipes();
-    }
-
-  };
-
-  // enter key press function
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter" && input.length !== 0) {
-      setInput(input);
-      setRecipes([]);
-      fetchRecipes();
-    }
-  };
+  const [index, setIndex] = useState(0);
 
   async function fetchRecipes() {
     setLoading(true); //shows skeleton state when fetchRecipes() is called
@@ -40,8 +19,45 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
     );
     setRecipes(hits);
     setLoading(false);
-    console.log(recipes);
   }
+
+  // search button function
+  const onSearch = () => {
+    if (input.length !== 0) {
+      setInput(input);
+      setIndex(0);
+      setRecipes([]);
+      fetchRecipes();
+    }
+    setRecipes([]);
+    fetchRecipes();
+  };
+
+  // enter key press search function
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" && input.length !== 0) {
+      setInput(input);
+      setIndex(0);
+      setRecipes([]);
+      fetchRecipes();
+    }
+  };
+
+  //next page function
+  const nextPage = () => {
+    const newIndex = index + 6;
+    if (newIndex < recipes.length) {
+      setIndex(newIndex);
+    }
+  };
+
+  //previous page function
+  const previousPage = () => {
+    const newIndex = index - 6;
+    if (newIndex >= 0) {
+      setIndex(newIndex);
+    }
+  };
 
   useEffect(() => {
     fetchRecipes();
@@ -67,19 +83,16 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
               </Link>
             </div>
           </div>
+
           <div className="results__header">
             <h2 className="results__header--title">Results:</h2>
-            {/* <select id="filter">
-              <option value="" disabled selected>
-                Sort
-              </option>
-              <option value="A-Z">A-Z</option>
-              <option value="YEAR">Release Year</option>
-            </select> */}
+            <div className="page__buttons">
+
+            <button className="page__button" onClick={previousPage}>Previous</button>
+            <button className="page__button" onClick={nextPage}>Next</button>
+            </div>
           </div>
-          {/* <figure className="results__img--wrapper">
-              <img className="results__img" src="./undraw_breakfast.svg" alt="" />
-            </figure> */}
+
           <div className="results__wrapper">
             {loading ? (
               new Array(6).fill(0).map((_, index) => <Skeleton key={index} />)
@@ -94,7 +107,7 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
               </figure>
             ) : (
               recipes
-                .slice(0, 6)
+                .slice(index, index + 6)
                 .map((recipe) => <Recipe recipe={recipe} key={recipe.uri} />)
             )}
           </div>

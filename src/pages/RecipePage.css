@@ -1,0 +1,38 @@
+.recipePage {
+  height: 70vh;
+}
+
+.recipePage__img--wrapper {
+  max-width: 300px;
+}
+
+.recipePage__img {
+  width: 100%;
+  border: 2px solid black;
+}
+
+.recipePage__title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.recipePage__left {
+  width: 100%;
+  max-width: 340px;
+}
+
+.recipePage__right {
+  width: 100%;
+  max-width: 400px;
+}
+
+.recipePage__ingredients {
+
+}
+
+.recipePage__ingredients--title {
+}
+
+.ingredients { 
+  flex-direction: column;
+}

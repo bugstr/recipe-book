@@ -4,14 +4,11 @@ import Footer from "./components/Footer";
 import Landing from "./components/Landing";
 import Recipes from "./pages/Recipes";
 import { useEffect, useState } from "react";
+import RecipePage from "./pages/RecipePage";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
   const [input, setInput] = useState("");
-
-  function searchRecipes(event) {
-    setInput(event);
-  }
 
   return (
     <Router>
@@ -39,6 +36,10 @@ function App() {
                 setRecipes={setRecipes}
               />
             }
+          />
+          <Route
+            path="/recipes/:id"
+            element={<RecipePage />}
           />
         </Routes>
         <Footer />
