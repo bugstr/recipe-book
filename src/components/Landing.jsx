@@ -21,7 +21,7 @@ function Landing({ input, setInput, recipes, setRecipes }) {
   useEffect(() => {
     setInput("");
     setRecipes([]);
-  }, []);
+  }, [setInput, setRecipes]);
 
   return (
       <div className="container">

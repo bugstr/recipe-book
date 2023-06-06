@@ -9,7 +9,7 @@ function RecipePage() {
   const [newRecipe, setNewRecipe] = useState("");
   const [loading, setLoading] = useState(true);
   const [length, setLength] = useState(0);
-  
+
   useEffect(() => {
     async function fetchRecipes() {
       setLoading(true);
@@ -23,7 +23,7 @@ function RecipePage() {
     }
 
     fetchRecipes();
-  }, []);
+  }, [id]);
 
   return (
     <div className="container">
