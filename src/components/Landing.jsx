@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Landing.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../index.css";
 
 function Landing({ input, setInput, recipes, setRecipes }) {
   const navigate = useNavigate();
@@ -25,7 +24,6 @@ function Landing({ input, setInput, recipes, setRecipes }) {
   }, []);
 
   return (
-    <header>
       <div className="container">
         <div className="row">
           <div className="header__content">
@@ -55,7 +53,6 @@ function Landing({ input, setInput, recipes, setRecipes }) {
           </figure>
         </div>
       </div>
-    </header>
   );
 }
 

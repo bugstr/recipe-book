@@ -74,3 +74,20 @@ nav {
 .btn-contact:hover {
   background-color: #242424;
 }
+
+/*
+
+  MEDIA QUERY
+
+*/
+
+/* Small phones, tablets, large smart phones */
+@media (max-width: 768px) {
+  .logo {
+    width: 50px;
+    height: 40px;
+  }
+  .nav__links {
+    display : none;
+  }
+}

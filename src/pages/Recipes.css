@@ -19,8 +19,8 @@
 .results__wrapper {
   display: flex;
   flex-wrap: wrap;
-  height: 80vh;
   padding: 32px 0;
+  height: 60vh;
 }
 
 .results__img--wrapper {
@@ -32,17 +32,17 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  /* animation: scaleUp 1s forwards; */
+  animation: scaleUp 0.5s forwards;
 }
 
-/* @keyframes scaleUp {
+@keyframes scaleUp {
   0% {
     transform: scale(0);
   }
   100% {
     transform: scale(100%);
   }
-} */
+}
 
 .results__img {
   width: 100%;
@@ -54,4 +54,36 @@
   padding-top: 24px;
   font-size: 24px;
   font-weight: bold;
+}
+
+/*
+
+  MEDIA QUERY
+
+*/
+
+/* Small phones, tablets, large smart phones */
+@media (max-width: 768px) {
+  .results__img--wrapper {
+    max-width: 500px;
+    padding-top: 32px;
+  }
+  .results__img {
+    height: auto;
+  }
+  .results__text {
+    font-size: 16px;
+  }
+  .results__header--title {
+    font-size: 16px;
+  }
+  .page__button {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+  .results__wrapper {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
 }
