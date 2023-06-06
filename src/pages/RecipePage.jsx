@@ -16,12 +16,10 @@ function RecipePage() {
       const { data } = await axios.get(
         `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=b8060f52&app_key=c03b64fb40b662ada3d4352fef3d2cbb%09`
       );
-
       setNewRecipe(data.recipe);
       setLength(data.recipe.ingredientLines.length);
       setLoading(false);
     }
-
     fetchRecipes();
   }, [id]);
 
@@ -50,7 +48,6 @@ function RecipePage() {
                   <FontAwesomeIcon icon="arrow-left" /> Go Back
                 </Link>
               </div>
-
               {length > 10 && (
                 <div className="nutrients">
                   <div className="nutrients__title">Nutrition</div>
@@ -71,44 +68,41 @@ function RecipePage() {
             </div>
           )}
 
-            {loading ? (
-              <div className="recipePage__skeleton"></div>
-            ) : (
-              <>
-                <div className="recipePage__ingredients">
-                  <div className="recipePage__ingredients--title">
-                    Ingredients
+          {loading ? (
+            <div className="recipePage__skeleton"></div>
+          ) : (
+            <>
+              <div className="recipePage__ingredients">
+                <div className="recipePage__ingredients--title">
+                  Ingredients
+                </div>
+                <div className="ingredients">
+                  {newRecipe.ingredientLines.map((ingredientLine, index) => (
+                    <div key={index}>{ingredientLine}</div>
+                  ))}
+                </div>
+              </div>
+              {length <= 10 && (
+                <div className="nutrients">
+                  <div className="nutrients__title">Nutrition</div>
+                  <div className="nutrients__info">
+                    {Math.floor(newRecipe.calories / newRecipe.yield)}{" "}
+                    Calories/Serving
+                    <p>{newRecipe.yield} Servings</p>
                   </div>
-                  <div className="ingredients">
-                    {newRecipe.ingredientLines.map((ingredientLine, index) => (
-                      <div key={index}>{ingredientLine}</div>
-                    ))}
+                  <div className="nutrients__allergies">
+                    {loading
+                      ? "Loading..."
+                      : newRecipe.healthLabels
+                          .slice(0, 14)
+                          .map((healthLabels, index) => (
+                            <div key={index}>{healthLabels}</div>
+                          ))}
                   </div>
                 </div>
-
-                {length <= 10 && (
-                  <div className="nutrients">
-                    <div className="nutrients__title">Nutrition</div>
-
-                    <div className="nutrients__info">
-                      {Math.floor(newRecipe.calories / newRecipe.yield)}{" "}
-                      Calories/Serving
-                      <p>{newRecipe.yield} Servings</p>
-                    </div>
-
-                    <div className="nutrients__allergies">
-                      {loading
-                        ? "Loading..."
-                        : newRecipe.healthLabels
-                            .slice(0, 14)
-                            .map((healthLabels, index) => (
-                              <div key={index}>{healthLabels}</div>
-                            ))}
-                    </div>
-                  </div>
-                )}
-              </>
-            )}
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -8,7 +8,6 @@ function Recipe({ recipe }) {
 
   const recipeId = url.substring(startIndex, endIndex);
 
-
   return (
     <div className="recipe">
       <Link to={`/recipes/${encodeURIComponent(recipeId)}`}>

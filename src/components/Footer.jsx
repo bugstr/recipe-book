@@ -5,11 +5,6 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer>
-      <Link to="/">
-        {/* <figure>
-              <img src="/logo-black.png" className="footer__logo" alt="" />
-            </figure> */}
-      </Link>
       <div className="footer__links">
         <Link to="/" className="footer__link link__hover-effect">
           Home

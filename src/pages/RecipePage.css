@@ -4,7 +4,9 @@
   padding-top: 24px;
   width: 100%;
   padding-left: 96px;
-  min-height: calc(100vh - 170px); /* Subtract the footer height from the viewport height */
+  min-height: calc(
+    100vh - 170px
+  ); /* Subtract the footer height from the viewport height */
 }
 
 .recipePage__img--wrapper {
