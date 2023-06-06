@@ -23,6 +23,7 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
 
   useEffect(() => {
     fetchRecipes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   // search button function
