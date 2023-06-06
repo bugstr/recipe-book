@@ -1,5 +1,4 @@
 .recipePage {
-  height: 85vh;
   display: flex;
   justify-content: space-evenly;
   gap: 80px;
@@ -36,6 +35,7 @@
 
 .recipePage__link > a {
   font-size: 18px;
+  max-width: 80px;
 }
 
 .recipePage__right {
@@ -96,4 +96,42 @@
   width: 100%;
   height: 300px;
   background-color: rgb(183, 178, 178);
+}
+
+/*
+
+  MEDIA QUERY
+
+*/
+
+/* Small phones, tablets, large smart phones */
+@media (max-width: 768px) {
+  .recipePage {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .recipePage__img--wrapper {
+    max-width: 250px;
+  }
+  .recipePage__link,
+  .recipePage__link > div > a,
+  .recipePage__link > a {
+    font-size: 14px;
+  }
+
+  .recipePage__ingredients--title,
+  .nutrients__title {
+    font-size: 16px;
+  }
+
+  .ingredients,
+  .nutrients__info,
+  .nutrients__allergies {
+    font-size: 12px;
+  }
+
+  .ingredients {
+    flex-wrap: nowrap;
+  }
 }

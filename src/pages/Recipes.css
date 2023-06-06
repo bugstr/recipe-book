@@ -20,7 +20,6 @@
   display: flex;
   flex-wrap: wrap;
   padding: 32px 0;
-  height: 60vh;
 }
 
 .results__img--wrapper {
