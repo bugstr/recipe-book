@@ -83,6 +83,8 @@
   .results__wrapper {
     flex-wrap: nowrap;
     flex-direction: column;
+    padding-bottom: 64px;
+    align-items: center;
   }
 
 }

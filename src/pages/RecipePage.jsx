@@ -54,21 +54,17 @@ function RecipePage() {
               {length >= 10 && (
                 <div className="nutrients">
                   <div className="nutrients__title">Nutrition</div>
-
                   <div className="nutrients__info">
                     {Math.floor(newRecipe.calories / newRecipe.yield)}{" "}
                     Calories/Serving
                     <p>{newRecipe.yield} Servings</p>
                   </div>
-
                   <div className="nutrients__allergies">
-                    {loading
-                      ? "Loading..."
-                      : newRecipe.healthLabels
-                          .slice(0, 14)
-                          .map((healthLabels, index) => (
-                            <div key={index}>{healthLabels}</div>
-                          ))}
+                    {newRecipe.healthLabels
+                      .slice(0, 14)
+                      .map((healthLabels, index) => (
+                        <div key={index}>{healthLabels}</div>
+                      ))}
                   </div>
                 </div>
               )}
@@ -84,39 +80,33 @@ function RecipePage() {
                   Ingredients
                 </div>
                 <div className="ingredients">
-                  {loading
-                    ? "Loading..."
-                    : newRecipe.ingredientLines.map((ingredientLine, index) => (
-                        <div key={index}>{ingredientLine}</div>
-                      ))}
+                  {newRecipe.ingredientLines.map((ingredientLine, index) => (
+                    <div key={index}>{ingredientLine}</div>
+                  ))}
                 </div>
               </div>
             )}
 
-            {loading ? (
-              <div className="recipePage__skeleton"></div>
-            ) : (
-              length <= 10 && (
-                <div className="nutrients">
-                  <div className="nutrients__title">Nutrition</div>
+            {length <= 10 && (
+              <div className="nutrients">
+                <div className="nutrients__title">Nutrition</div>
 
-                  <div className="nutrients__info">
-                    {Math.floor(newRecipe.calories / newRecipe.yield)}{" "}
-                    Calories/Serving
-                    <p>{newRecipe.yield} Servings</p>
-                  </div>
-
-                  <div className="nutrients__allergies">
-                    {loading
-                      ? "Loading..."
-                      : newRecipe.healthLabels
-                          .slice(0, 14)
-                          .map((healthLabels, index) => (
-                            <div key={index}>{healthLabels}</div>
-                          ))}
-                  </div>
+                <div className="nutrients__info">
+                  {Math.floor(newRecipe.calories / newRecipe.yield)}{" "}
+                  Calories/Serving
+                  <p>{newRecipe.yield} Servings</p>
                 </div>
-              )
+
+                <div className="nutrients__allergies">
+                  {loading
+                    ? "Loading..."
+                    : newRecipe.healthLabels
+                        .slice(0, 14)
+                        .map((healthLabels, index) => (
+                          <div key={index}>{healthLabels}</div>
+                        ))}
+                </div>
+              </div>
             )}
           </div>
         </div>
