@@ -21,6 +21,10 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
     setLoading(false);
   }
 
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
+  
   // search button function
   const onSearch = () => {
     if (input.length !== 0) {
@@ -59,9 +63,6 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
     }
   };
 
-  useEffect(() => {
-    fetchRecipes();
-  }, []);
 
   return (
     <header>

@@ -9,19 +9,19 @@ function RecipePage() {
   const [newRecipe, setNewRecipe] = useState("");
   const [loading, setLoading] = useState(true);
   const [length, setLength] = useState(0);
-
-  async function fetchRecipes() {
-    setLoading(true);
-    const { data } = await axios.get(
-      `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=b8060f52&app_key=c03b64fb40b662ada3d4352fef3d2cbb%09`
-    );
-
-    setNewRecipe(data.recipe);
-    setLength(data.recipe.ingredientLines.length);
-    setLoading(false);
-  }
-
+  
   useEffect(() => {
+    async function fetchRecipes() {
+      setLoading(true);
+      const { data } = await axios.get(
+        `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=b8060f52&app_key=c03b64fb40b662ada3d4352fef3d2cbb%09`
+      );
+
+      setNewRecipe(data.recipe);
+      setLength(data.recipe.ingredientLines.length);
+      setLoading(false);
+    }
+
     fetchRecipes();
   }, []);
 

@@ -35,7 +35,7 @@
 
 .recipePage__link > a {
   font-size: 18px;
-  max-width: 80px;
+  max-width: 100px;
 }
 
 .recipePage__right {
@@ -43,7 +43,6 @@
   width: 100%;
   max-width: 600px;
   gap: 40px;
-  height: 100%;
 }
 
 .recipePage__ingredients {
@@ -110,6 +109,9 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
+  }
+  .recipePage__right {
+
   }
   .recipePage__img--wrapper {
     max-width: 250px;

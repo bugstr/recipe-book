@@ -3,7 +3,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Landing from "./components/Landing";
 import Recipes from "./pages/Recipes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import RecipePage from "./pages/RecipePage";
 
 function App() {
