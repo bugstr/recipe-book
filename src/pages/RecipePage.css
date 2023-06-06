@@ -3,7 +3,8 @@
   gap: 80px;
   padding-top: 24px;
   width: 100%;
-  padding-left: 64px;
+  padding-left: 96px;
+  min-height: calc(100vh - 170px); /* Subtract the footer height from the viewport height */
 }
 
 .recipePage__img--wrapper {
@@ -43,6 +44,7 @@
   display: flex;
   max-width: 600px;
   gap: 40px;
+  width: 100%;
 }
 
 .recipePage__ingredients {
@@ -110,11 +112,12 @@
     align-items: center;
     gap: 24px;
     padding-left: 0;
+    min-height: calc(100vh - 100px);
   }
   .recipePage__right {
     padding: 0 16px;
   }
-  
+
   .recipePage__img--wrapper {
     max-width: 250px;
   }
@@ -139,5 +142,9 @@
     flex-wrap: nowrap;
     height: auto;
     padding-bottom: 16px;
+  }
+
+  .recipePage__skeleton {
+    max-width: 250px;
   }
 }

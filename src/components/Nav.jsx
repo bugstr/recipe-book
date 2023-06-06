@@ -6,11 +6,9 @@ function Nav() {
   return (
     <nav>
       <div className="nav__container">
-        <Link to="/">
-          <figure className="logo--wrapper">
-            <img className="logo" src="/logo-black.png" alt="" />
-          </figure>
-        </Link>
+        <figure className="logo--wrapper">
+          <img className="logo" src="/logo-black.png" alt="" />
+        </figure>
         <div className="nav__links">
           <Link to="/" className="nav__link link__hover-effect">
             Home
