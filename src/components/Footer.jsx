@@ -9,9 +9,15 @@ function Footer() {
         <Link to="/" className="footer__link link__hover-effect">
           Home
         </Link>
-        <Link to="/" className="footer__link link__hover-effect">
-          About
-        </Link>
+
+        <a
+          target="_blank"
+          className="footer__link link__hover-effect"
+          href="https://github.com/bugstr/recipe-book"
+        >
+          Github
+        </a>
+
         <Link to="/recipes" className="footer__link link__hover-effect">
           Recipes
         </Link>
