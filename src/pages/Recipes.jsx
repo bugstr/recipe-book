@@ -25,7 +25,7 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
     fetchRecipes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   // search button function
   const onSearch = () => {
     if (input.length !== 0) {
@@ -64,7 +64,6 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
     }
   };
 
-
   return (
     <header>
       <div className="container">
@@ -89,9 +88,12 @@ function Recipes({ input, setInput, recipes, setRecipes }) {
           <div className="results__header">
             <h2 className="results__header--title">Results:</h2>
             <div className="page__buttons">
-
-            <button className="page__button" onClick={previousPage}>Previous</button>
-            <button className="page__button" onClick={nextPage}>Next</button>
+              <button className="page__button" onClick={previousPage}>
+                Previous
+              </button>
+              <button className="page__button" onClick={nextPage}>
+                Next
+              </button>
             </div>
           </div>
 
